@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
+import java.util.*
 
 
 @Service
@@ -39,5 +40,9 @@ class BookService @Autowired constructor(private val bookRepository: BookReposit
 
     fun deleteBook(id: Long) {
         bookRepository.deleteById(id)
+    }
+    fun getNameById(id: Long): String {
+        val existingBook = getBookById(id)
+            return existingBook!!.author.toString()
     }
 }
