@@ -21,17 +21,18 @@ class BookController @Autowired constructor(private val bookService: BookService
         bookService.addBook(book)
         return book
     }
-
     @GetMapping("/{id}")
     fun getBookById(@PathVariable id: Long): Book? {
         return bookService.getBookById(id)
     }
-
+    @GetMapping("/{id}")
+    fun getNameById(@PathVariable id: Long): String? {
+        return bookService.getNameById(id)
+    }
     @PutMapping("/{id}")
     fun updateBookById(@PathVariable id: Long, @RequestBody updatedBook: Book): Book? {
         return bookService.updateBook(id, updatedBook)
     }
-
     @DeleteMapping("/{id}")
     fun deleteBookById(@PathVariable id: Long) {
         return bookService.deleteBook(id)
